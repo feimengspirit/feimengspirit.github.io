@@ -1,3 +1,10 @@
+---
+layout: post
+title: Awesome Swift	
+description: Awesome Swift
+category: blog
+---
+
 Awesome Swift
 =============
 

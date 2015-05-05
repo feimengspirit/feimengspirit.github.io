@@ -1,3 +1,10 @@
+---
+layout: post
+title: Awesome C/C++	
+description: Awesome C/C++
+category: blog
+---
+
 # Awesome C/C++
 A curated list of awesome C/C++ frameworks, libraries, resources, and shiny things. Inspired by awesome-... stuff.
 
