@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Awesome C/C++	
-description: Awesome C/C++
+description: 汇集了Github上比较全名的C++项目资源
 category: blog
 ---
 

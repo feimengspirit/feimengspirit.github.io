@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Awesome Swift	
-description: Awesome Swift
+description: 收集了Github上比较全名的Swift项目资源
 category: blog
 ---
 
