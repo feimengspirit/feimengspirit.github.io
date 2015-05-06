@@ -105,10 +105,10 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 .index-content .artical-cate li a,
 .index-content .artical-cate li a:visited { display:inline-block; zoom:1; color:#000; width:100%; }
 .index-content .artical-cate li a:hover { text-decoration:none; }
-.index-content .artical-cate li.on span{ color:red; }
+.index-content .artical-cate li.on span{ color:#E50053; }
 
 .index-content .cate-bar { height:3px; width:70%; margin:0 auto;margin-bottom:100px; }
-.index-content #cateBar { display:inline-block; zoom:1; height:3px; background:red; position:relative; width:0; }
+.index-content #cateBar { display:inline-block; zoom:1; height:3px; background:#E50053; position:relative; width:0; }
 
 /***************Wiki Style*****************/
 .wiki h2{cursor:pointer;}
