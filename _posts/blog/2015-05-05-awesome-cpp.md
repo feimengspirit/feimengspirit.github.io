@@ -5,7 +5,6 @@ description: 汇集了Github上比较全名的C++项目资源
 category: blog
 ---
 
-# Awesome C/C++
 A curated list of awesome C/C++ frameworks, libraries, resources, and shiny things. Inspired by awesome-... stuff.
 
 - [Awesome C/C++](#awesome-cpp)

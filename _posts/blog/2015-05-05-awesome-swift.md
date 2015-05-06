@@ -5,9 +5,6 @@ description: 收集了Github上比较全名的Swift项目资源
 category: blog
 ---
 
-Awesome Swift
-=============
-
 A collaborative list of awesome Swift resources,inspired by [awesome-python](https://github.com/vinta/awesome-python) and listed on [awesome-awesomeness](https://github.com/bayandin/awesome-awesomeness).
 
 Feel free to contribute!
