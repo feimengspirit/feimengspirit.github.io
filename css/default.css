@@ -81,15 +81,15 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 }
 .blog .aside{
     /*background-image:url(https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*cF2i1ZosSP_UTJig.jpeg);*/
-    background-image:url(http://i2.tietuku.com/9a8ce577ab7c615a.jpg);
+    background-image:url(/images/background/blog.jpg);
 }
 .opinion .aside{
     /*background-image:url(https://dnqgz544uhbo8.cloudfront.net/_/fp/img/bestof/june-2013.CaUUbO2jIECgCmldhmxCCA.jpg);*/
-    background-image:url(http://i2.tietuku.com/d0a16ea243dec086.jpg)
+    background-image:url(/images/background/life.jpeg)
 }
 .project .aside{
     /*background-image:url('https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*kTUZamBulGQZg1MW.jpeg')*/
-    background-image:url(http://i2.tietuku.com/eb80f1aff0365471.jpg)
+    background-image:url(/images/background/project.jpg)
 }
 .index-content .section { margin-left:30%; padding-top:80px; padding-right:15%; ;}
 
