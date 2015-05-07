@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 使用Github Pages建独立博客
+title: 使用Github Pages建独立博客[转]
 description: Github本身就是不错的代码社区，他也提供了一些其他的服务，比如Github Pages，使用它可以很方便的建立自己的独立博客，并且免费。
 category: blog
 ---
@@ -330,10 +330,11 @@ Google的高亮插件使用也比较方便，只需要在`<pre>`的标签上加�
 还有一个是关于`category`的问题，根据`YAML`的语法，我们在文章头部可以定义文章所属的类别，也可以定义为`category:[blog,rss]`这样子的多类别，我在本地试一切正常，但是push到GitHub之后，就无法读取了，真让人着急，没有办法，只能采用别的办法满足我的需求了。这里还有一篇[Jekyll 本地调试之若干问题][18]，安装中如果有其他问题，也可以对照参考一下。
 
 ##结语
-如果你跟着这篇不那么详尽的教程，成功搭建了自己的博客，恭喜你！剩下的就是保持热情的去写自己的文章吧。
+如果你跟着这篇不那么详尽的教程，成功搭建了自己的博客，恭喜你！剩下的就是保持热情的去写自己的文章吧。另外奉上本人的GitHub Page[源码](https://github.com/feimengspirit/feimengspirit.github.io)。欢迎参考借鉴，记得标明出处哦!
 
+[原文][]在此!
 
-[BeiYuu]:    http://beiyuu.com  "BeiYuu"
+[原文]:	http://beiyuu.com/github-pages/
 [Github]:   http://github.com "Github"
 [jQuery]:   https://github.com/jquery/jquery "jQuery@github"
 [Twitter]:  https://github.com/twitter/bootstrap "Twitter@github"
