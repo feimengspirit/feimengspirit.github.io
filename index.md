@@ -5,9 +5,9 @@ layout: home
 <div class="index-content blog">
     <div class="section">
         <ul class="artical-cate">
-            <li class="on"><a href="/"><span><b>技术博客</b></span></a></li>
-            <li style="text-align:center"><a href="/opinion"><span><b>生活感悟</b></span></a></li>
-            <li style="text-align:right"><a href="/project"><span><b>其他</b></span></a></li>
+            <li class="on"><a href="/"><span><h2>技术博客</h2></span></a></li>
+            <li style="text-align:center"><a href="/opinion"><span><h2>生活感悟</h2></span></a></li>
+            <li style="text-align:right"><a href="/project"><span><h2>其他</h2></span></a></li>
         </ul>
 
         <div class="cate-bar"><span id="cateBar"></span></div>
