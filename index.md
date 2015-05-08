@@ -5,7 +5,7 @@ layout: home
 <div class="index-content blog">
     <div class="section">
         <ul class="artical-cate">
-            <li class="on"><a href="/"><span><h2>技术博客</h2></span></a></li>
+            <li class="on"><a href="/"><span><h2>技术博文</h2></span></a></li>
             <li style="text-align:center"><a href="/opinion"><span><h2>胡言乱语</h2></span></a></li>
             <li style="text-align:right"><a href="/project"><span><h2>其他</h2></span></a></li>
         </ul>
