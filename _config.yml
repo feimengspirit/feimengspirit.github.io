@@ -4,7 +4,8 @@ markdown: rdiscount
 pygments: true
 paginate: 8
 permalink: /:title
-gems: - jemoji
+gems: 
+- jemoji
 
 title: feimengspirit.com
 url: http://feimengspirit.com
