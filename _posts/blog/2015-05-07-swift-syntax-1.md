@@ -105,8 +105,30 @@ swift中你可以让函数返回一个tuple型。tuple中可以包含若干个�
 	func join(#string: String, #toString: String, #withJoiner: String) -> String {
 	    return string + withJoiner + toString;
 	}
+	
 
+###Optionals
+Swift中提供了optional值来避免指针的使用。如果一对象有可能是空，就需要为其指定Optional特性。这时候你会经常与?,!和"if let"打交道了。
 
+	var possiblyNil: Circle?
+	possiblyNil = Circle(radius: 5)
+	possiblyNil!.circumference() // 如果为nil会抛异常
+	possiblyNil?.circumference() // 一个新的optional值
+	if let notNil = possiblyNil {
+	    notNil.circumference() // 如果notNil则有值
+	}
+	 
+	let certainlyNil: Circle?
+	certainlyNil?.circumference() // nil
+	if let notNil = certainlyNil {
+	    notNil.circumference() // Never executed
+	}
+	 
+	var shouldntBeNil: Circle! // Shouldn't ever be nil
+	shouldntBeNil = Circle(radius: 5)
+	shouldntBeNil.circumference() // Treat as normal variable
+
+可以看出Optional的引入是为了尽可能减少程序中的错误。通过合理的使用optional，也就是仅仅在有可能会为空的变量才使用，这样编译器在编译时就可以检查你的语法，在误用时直接爆出错误。从而可以保证程序更加可靠。而不像是objc中，所有的变量都可能为空。这种情况下编译器是无从得知哪个赋值语句或者调用是有问题的。optional将程序员运行时需要完成的检查移到了编译时，如果你深谙程序设计之道，就会理解一条原则:"尽可能让错误暴露在编译时"。
 	
 ###函数型返回值
 在swift中，函数是一等公民。也就是高阶函数。虽然这句话在各类说明中重复出现。但很多人并不了解其意义。一等公民意味着函数可以像其他基本类型一样作为参数和作为返回值。有人会反驳说：c/c++中函数也可以作为参数和返回值。请记住，c/c++中作为参数和返回值的不是函数本身，而是函数地址，即指针。指针作为基本类型，当然是一等公民的,但c/c++中的函数并不是。
