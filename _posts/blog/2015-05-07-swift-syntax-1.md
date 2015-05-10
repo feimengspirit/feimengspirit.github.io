@@ -105,6 +105,10 @@ swift中你可以让函数返回一个tuple型。tuple中可以包含若干个�
 	func join(#string: String, #toString: String, #withJoiner: String) -> String {
 	    return string + withJoiner + toString;
 	}
+
+调用时仍然是下面形式：
+
+	join(string: "hello", toString: "world", withJoiner: ",")
 	
 
 ###Optionals
