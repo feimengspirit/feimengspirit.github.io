@@ -4,7 +4,7 @@ title: iOS设备名列表(持续更新)
 description: 收集了目前为止的所有iOS设备号及其对应的设备名称
 category: blog
 ---
-	
+
 iOS中涉及到机型适配的开发时，由于系统api只会返回硬件号，必须做下到机型名的映射。下面收集了目前为止的所有iOS设备的硬件号及其映射关系。后面如果有新机器还会持续更新。如有遗漏欢迎提醒或补充哦!😋
 	
     struct utsname systemInfo;
