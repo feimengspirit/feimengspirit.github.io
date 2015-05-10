@@ -159,13 +159,13 @@ Git会根据用户的名字和邮箱来记录提交。GitHub也是用这些信�
 ###绑定域名
 我们在第一部分就提到了在DNS部分的设置，再来看在GitHub的配置，要想让`username.github.io`能通过你自己的域名来访问，需要在项目的根目录下新建一个名为`CNAME`的文件，文件内容形如：
 
-    beiyuu.com
+    feimengspirit.com
 
 你也可以绑定在二级域名上：
 
-    blog.beiyuu.com
+    www.feimengspirit.com
 
-需要提醒的一点是，如果你使用形如`beiyuu.com`这样的一级域名的话，需要在DNS处设置A记录到`207.97.227.245`（**这个地址会有变动，[这里][a-record]查看**），而不是在DNS处设置为CNAME的形式，否则可能会对其他服务（比如email）造成影响。
+需要提醒的一点是，如果你使用形如`feimengspiritcom`这样的一级域名的话，需要在DNS处设置A记录到`207.97.227.245`（**这个地址会有变动，[这里][a-record]查看**），而不是在DNS处设置为CNAME的形式，否则可能会对其他服务（比如email）造成影响。
 
 设置成功后，根据DNS的情况，最长可能需要一天才能生效，耐心等待吧。
 
