@@ -157,9 +157,9 @@ Ant是怎样工作的？原理非常简单。Ant把包含有构造命令的XML�
 		(fileset (dir "src_dir")))
 仔细看看这个例子, 差别在哪里? 尖括号改成了圆括号, 每个元素原来是有一对括号标记包围的, 现在取消了后一个(就是带斜杠的那个)括号标记。表示元素的结束只需要一个”)”就可以了。不错, 差别就是这些。这两种表达方式的转换, 非常自然, 也非常简单。s表达式打起字来, 也省事得多。第一次看s表达式(Lisp)时, 括号很烦人是吧? 现在我们明白了背后的道理, 一下子就变得容易多了。至少, 比XML要好的多。用s表达式写代码, 不单是实用, 而且也很让人愉快。s表达式具有XML的一切好处, 这些好处是我们刚刚探讨过的。现在我们看看更加Lisp风格的task例子:
 
-(task (name "Test")
-	(echo (message "Hellow World!")))
-(Test)
+	(task (name "Test")
+		(echo (message "Hellow World!")))
+	(Test)
 用Lisp的行话来讲, s表达式称为表(list)。对于上面的例子, 如果我们写的时候不加换行, 用逗号来代替空格, 那么这个表达式看起来就非常像一个元素列表, 其中又嵌套着其他标记。
 
 	(task, (name, "test"), (echo, (message, "Hello World!")))
@@ -357,8 +357,7 @@ Lisp使人超越平庸, 走到前沿。学会Lisp意味着你能找到更好的�
 
 这篇文章写写停停, 用了几个月才最终完成。如果你觉得有趣, 或者有什么问题, 意见或建议, 请给我发邮件coffeemug@gmail.com, 我会很高兴收到你的反馈。
 
-----
-#The Nature of Lisp
+
 ##Introduction
 When I first stumbled into Lisp advocacy on various corners of the web I was already an experienced programmer. At that point I had grokked what seemed at the time a wide range of programming languages. I was proud to have the usual suspects (C++, Java, C#, etc.) on my service record and was under impression that I knew everything there is to know about programming languages. I couldn't have possibly been more wrong.
 
