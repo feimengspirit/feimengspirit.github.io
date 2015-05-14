@@ -1,11 +1,9 @@
 ---
 layout: post
 title: 漫谈闭包
-description: 谈谈闭包
+description: 谈谈闭包和Lambda
 category: blog
 ---
-
-##[写作中..请关注!]
 
 各种书籍和网络文章对闭包的说明何其之多。但大多是流于理论。使得对闭包的概念仍然是不够清晰。
 
@@ -186,7 +184,6 @@ lambda的类型是什么？实际上在之前的代码中已经使用了std::fun
 
 下表罗列了目前主流语言对closure的支持情况:
 ![closure](/images/blog/closure.png)
-
 
 
 [feimengspirit]:    http://feimengspirit.com  "feimengspirit"
