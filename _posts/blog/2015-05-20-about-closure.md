@@ -150,7 +150,7 @@ C++11中对lambda的实现实际上是一个重载了operator()的类.这样上�
 	{
 	public:
 		lambda2():_a(10){}
-		std::function<int(int)> operator()()
+		lambda1 operator()()
 		{
 			return lambda1(_a);
 		}
@@ -176,10 +176,14 @@ C++11中对lambda的实现实际上是一个重载了operator()的类.这样上�
 	[bar]	Capture bar by making a copy; don't copy anything else
 	[this]	Capture the this pointer of the enclosing class
 	
-lambda的类型是什么？实际上在之前的代码中已经使用了std::function<>模板。
-模板类型参数就是lambda类的operator()的类型。然而对于未捕获任何局部变量的lambda，通常编译器都会做出优化，不会将其编译成模板形式，而是一个普通的函数。这样其类型自然就可以使用函数指针的方式表达。
+那么lambda的类型是什么？
+lambada的类型可以用通用的std::function<>模板表达，其中类型参数为lambda的对应的函数指针类型。如lambda1的类型就是std::function<int(int)>;
 
-由此可见在不支持自动垃圾回收的语言中实现closure特性是比较麻烦的。但借助于lambda,C++的STL已经更加强大。后面如果有机会再做探讨。
+另外对于未捕获任何局部变量的lambda，实际上完全等同于函数指针。通常编译器都会做出优化，
+这时候可以直接用函数指针表达。
+
+由此可见在不支持自动垃圾回收的语言中实现closure特性是比较麻烦的。其中陷阱用了才有体会。
+但借助于lambda,C++的STL已经更加强大。后面如果有机会再做探讨。
 欢迎交流！！！
 
 下表罗列了目前主流语言对closure的支持情况:
