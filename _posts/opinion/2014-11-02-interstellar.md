@@ -68,3 +68,13 @@ Rage, rage against the dying of the light. <br/>
 <sub>[1]: Dylan Thomas(1914—1953),英国著名诗人、作家。这位才华横溢的诗人死于饮酒过量,去世时年仅39岁。他的创作灵感大多来自其故乡南威尔士美轮美奂的风景,而其诗作大体属于超现实主义流派,围绕生、欲和死这三大主题,诗风粗犷而热烈。另外,托马斯很注重诗句的押韵,其诗以善于朗诵而闻名。本期收录的该诗的音频就由其本人朗诵。Dylan Thomas著有18 Poems(《诗十八首》)、The Map of Love(《爱情的地图》)和Deaths and Entrances(《死亡与出路》)等诗集。</sub>
 
 [feimengspirit]:    http://feimengspirit.com  "feimengspirit"
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>

@@ -5,6 +5,7 @@ description: Github本身就是不错的代码社区，他也提供了一些其�
 category: blog
 ---
 
+
 [Github][]很好的将代码和社区联系在了一起，于是发生了很多有趣的事情，世界也因为他美好了一点点。Github作为现在最流行的代码仓库，已经得到很多大公司和项目的青睐，比如[jQuery][]、[Twitter][]等。为使项目更方便的被人理解，介绍页面少不了，甚至会需要完整的文档站，Github替你想到了这一点，他提供了[Github Pages][]的服务，不仅可以方便的为项目建立介绍站点，也可以用来建立个人博客。
 
 Github Pages有以下几个优点：
@@ -362,3 +363,13 @@ Google的高亮插件使用也比较方便，只需要在`<pre>`的标签上加�
 [17]: http://jekyllbootstrap.com/
 [18]: http://chxt6896.github.com/blog/2012/02/13/blog-jekyll-native.html
 [a-record]: https://help.github.com/articles/my-custom-domain-isn-t-working
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>

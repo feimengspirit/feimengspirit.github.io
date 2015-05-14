@@ -5,6 +5,7 @@ description: 整理Swift中的一些语法特性
 category: blog
 ---
 
+
 ##简介
 从去年开始接触iOS开发，由于工作中涉及的大部分仍是C++部分，混编而言还是objc更为和谐。所以虽然一直摩拳擦掌，还是没有怎么深入学习swift。近期有了一些时间进行学习，记录下学习的过程，权当做笔记吧。
 
@@ -186,3 +187,13 @@ Swift中提供了optional值来避免指针的使用。如果一对象有可能�
 文中[源码]地址，使用xcode即可打开的playground文件。
 	
 [源码]: https://github.com/feimengspirit/swift-learning
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>

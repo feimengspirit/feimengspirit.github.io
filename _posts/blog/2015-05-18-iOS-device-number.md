@@ -58,3 +58,15 @@ iOS中涉及到机型适配的开发时，由于系统api只会返回硬件号�
 	
 	if ([platform isEqualToString:@"i386"])      return @"Simulator";
 	if ([platform isEqualToString:@"x86_64"])    return @"Simulator";
+
+
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>

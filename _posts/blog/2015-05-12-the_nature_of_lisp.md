@@ -721,3 +721,14 @@ Whew. That's enough. I've been writing this article, on and off, for months. If 
 
 1I have never met James, nor does he know about my existence. The story is entirely fictional and is based on a few postings about Ant's history I found on the internet.
 2Lisp has many different dialects (the most popular of which are Common Lisp and Scheme). Each dialect deals with intricate details differently yet shares the same set of basic principles. Since the goal of this article is to give you an understanding of Lisp's principles I will use Blaise for examples (which at the time of this writing is vaporware). With some minor modifications these examples can be translated to other Lisp dialects.
+
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>

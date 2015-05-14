@@ -5,6 +5,7 @@ description: 谈谈闭包和Lambda
 category: blog
 ---
 
+
 各种书籍和网络文章对闭包的说明何其之多。但大多是流于理论。使得对闭包的概念仍然是不够清晰。
 
 说的玄乎点，**闭包**是指捕获了其环境的代码块。
@@ -191,3 +192,14 @@ lambada的类型可以用通用的std::function<>模板表达，其中类型参�
 
 
 [feimengspirit]:    http://feimengspirit.com  "feimengspirit"
+
+<div id="ckepop">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_weixin">微信</a>
+
+<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+
