@@ -85,11 +85,11 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 }
 .opinion .aside{
     /*background-image:url(https://dnqgz544uhbo8.cloudfront.net/_/fp/img/bestof/june-2013.CaUUbO2jIECgCmldhmxCCA.jpg);*/
-    background-image:url(/images/background/life.jpeg)
+    background-image:url(/images/background/blog.jpg)
 }
 .project .aside{
     /*background-image:url('https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*kTUZamBulGQZg1MW.jpeg')*/
-    background-image:url(/images/background/project.jpg)
+    background-image:url(/images/background/blog.jpg)
 }
 .index-content .section { margin-left:30%; padding-top:80px; padding-right:15%; ;}
 
