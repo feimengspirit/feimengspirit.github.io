@@ -22,5 +22,8 @@ layout: home
         </ul>
     </div>
     <div class="aside">
+        <div class="introduction">
+            <!-- <h3>我是孟飞</h3> -->
+        </div>
     </div>
 </div>
