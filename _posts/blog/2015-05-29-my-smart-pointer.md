@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 简单的C++智能指针
+title: 一个简单的C++智能指针
 description: 实现了一个简单的C++智能指针工具
 category: blog
 ---
 
-##背景
 
+##背景
 在iOS上进行C++和objc混编开发时，颇为讨厌的是C++的内存问题。一不小心就会泄漏。堆变量的使用一直困扰着你。一个行之有效的方式是使用智能指针。智能指针的原理比较简单，如下图示：
 ![smart_ptr](/images/blog/smart_ptr.png)
 
@@ -32,7 +32,6 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 闲话少说，这就开始吧!
 
 ##实现
-
 我将自己的这个工具取名为XP(不是Microsoft的擦屁，而是X-pointer)
 显而易见，XP将是一个模板类:
 
@@ -69,7 +68,6 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 接下来定义XP的构造函数、拷贝构造函数、operator=等。
 
 ###构造函数
-
 首先是最基本的构造函数：
 
     XP(ElementType *other, Deletor d = [](T *p) { if (p) delete p; });
@@ -139,7 +137,6 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 
 
 ###拷贝构造函数
-
 接下来是拷贝构造函数
 
 	XP(const XP<T>& other); //普通拷贝构造函数
@@ -212,7 +209,6 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 这样两个版本的拷贝构造函数就完成了。
 
 ###运算符
-
 个人认为运算符是C++中的一大亮点，这种灵活性带来了C++中的复杂数据类型与原生数据类型的契合。所以没有赋值运算符是万万不能的。
 
 与拷贝构造函数一样，我们需要提供两个版本的operator=。如下：
@@ -254,6 +250,7 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 	}
 
 ###析构函数
+析构函数非常简单，就是调用了一下release实现。
 
 	template <typename T>
 	XP<T>::~XP()
@@ -261,12 +258,9 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 	    this->release();
 	}
 
-析构函数非常简单，就是调用了一下release实现。
-
 实现完毕。
 
 ###使用范例
-
 接下来我们用一个小范例展示下XP的威力吧！
 
 	XP<Base> aXP(new Derive);
