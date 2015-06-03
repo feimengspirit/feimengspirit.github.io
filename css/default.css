@@ -104,6 +104,17 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     margin-top: 200px;
 }
 
+.photo {
+    text-align: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    width: 64px;
+    height: 64px; 
+    /* 宽度和高度需要相等 */
+}
+
 .index-content .section { margin-left:30%; padding-top:80px; padding-right:15%; ;}
 
 .index-content .artical-list { width:70%; margin:0 auto; }

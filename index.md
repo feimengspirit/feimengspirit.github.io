@@ -23,20 +23,23 @@ layout: home
     </div>
     <div class="aside">
         <div class="introduction">
-            <h2 style="font-size:32px">Eric Meng</h2>
+            <div class="photo"> 
+                <img src="/images/lambda.png" width="120%" />
+            </div>
+            <br/>
             <h4>正如树叶荣枯，鼎膨代谢，终随秋风凋落，人生风景亦如斯。</h4>
             <!-- 微博 -->
-            <a href="http://weibo.com/208234305/" target="_blank">
+            <a href="http://weibo.com/208234305/" target="_blank" title="微博">
                 <i class="fa fa-weibo fa-2x"></i>
-            </a>
+            </a>&nbsp
             <!-- twitter -->
-            <a href="http://twitter.com/feimengspirit/" target="_blank">
+            <a href="http://twitter.com/feimengspirit/" target="_blank" title="Twitter">
                 <i class="fa fa-twitter fa-2x" class="before"></i>
-            </a>
+            </a>&nbsp
             <!-- github -->
-            <a href="https://github.com/feimengspirit" target="_blank">
+            <a href="https://github.com/feimengspirit" target="_blank" title="Github">
                 <i class="fa fa-github fa-2x"></i>
-            </a>
+            </a>&nbsp
             <!-- 邮件 -->
             <a href="mailto:feimengspirit@gmail.com" title="邮件联系">
                 <i class="fa fa-envelope fa-2x"></i>
