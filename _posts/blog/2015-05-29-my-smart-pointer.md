@@ -260,7 +260,7 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 
 实现完毕。
 
-###使用范例
+##使用范例
 接下来我们用一个小范例展示下XP的威力吧！
 
 	XP<Base> aXP(new Derive);
