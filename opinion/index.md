@@ -25,7 +25,7 @@ layout: home
     </div>
     <div class="aside">
         <div class="introduction">
-            <h2 style="font-size:30px" = "">Why so serious?</h2>
+            <h2 style="font-size:32px">Eric Meng</h2>
             <h4>正如树叶荣枯，鼎膨代谢，终随秋风凋落，人生风景亦如斯。</h4>
             <!-- 微博 -->
             <a href="http://weibo.com/208234305/" target="_blank">
