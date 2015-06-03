@@ -94,16 +94,15 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 
 .introduction {
     color: white;
-    background-color: red;
     text-align: center;
     position: relative;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    height: 60px;
+    padding-top: 50px;
+    padding-bottom: 50px;
     padding-left: 60px;
     padding-right: 60px;
-
+    margin-top: 200px;
 }
-
 
 .index-content .section { margin-left:30%; padding-top:80px; padding-right:15%; ;}
 
@@ -122,7 +121,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
 .index-content .artical-cate li.on span{ color:#E50053; }
 
 .index-content .cate-bar { height:3px; width:70%; margin:0 auto;margin-bottom:60px; }
-/*.index-content #cateBar { display:inline-block; zoom:1; height:3px; background:#E50053; position:relative; width:0; }*/
+/*.index-content #cateBar { display:inline-block; zoom:1; height:3px; background:#E50053; position:relative; width:0; }
 
 /***************Wiki Style*****************/
 .wiki h2{cursor:pointer;}
