@@ -3,6 +3,7 @@ layout: post
 title: 漫谈闭包
 description: 谈谈闭包和Lambda
 category: blog
+tags: 闭包 closure 函数式编程
 ---
 
 

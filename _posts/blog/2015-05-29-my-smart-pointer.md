@@ -3,6 +3,7 @@ layout: post
 title: 一个简单的C++智能指针
 description: 实现了一个简单的C++智能指针工具
 category: blog
+tags: C++ 智能指针
 ---
 
 
@@ -11,7 +12,7 @@ category: blog
 ![smart_ptr](/images/blog/smart_ptr.png)
 
 * 如果两个智能指针对象指向同一个动态内存，则他们共享相同的计数器地址。所以动态内存和计数器地址是一一对应
-* 如果两个只能指针引用同一个计数器地址，则为了防止他们并发更改计数造成混乱，必须引用相同的锁对象来控制；
+* 如果两个智能指针引用同一个计数器地址，则为了防止他们并发更改计数造成混乱，必须引用相同的锁对象来控制；
 
 这样就得出动态内存、计数器地址、锁对象是一一对应，共生共亡的关系。
 
@@ -32,8 +33,7 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 闲话少说，这就开始吧!
 
 ##实现
-我将自己的这个工具取名为XP(不是Microsoft的擦屁，而是X-pointer)
-显而易见，XP将是一个模板类:
+我将自己的这个工具取名为XP(不是Microsoft的擦屁，而是X-pointer)。显而易见，XP将是一个模板类:
 
 	template <typename T>
 	class XP
@@ -59,10 +59,10 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
     
 其中
 
-* ElementType是XP包含的真实指针对应的类型。
+* ElementType是XP包含的原生动态内存的指针对应的类型。
 * CountType是引用计数的数值类型。
 * Deletor是当ElementType超出生命周期用于销毁其的函数对象(默认为delete操作符)
-* _mutex是为了控制对_count的并发操作。
+* _mutex是为了控制对_count的并发操作的锁变量。
 
 
 接下来定义XP的构造函数、拷贝构造函数、operator=等。
@@ -134,7 +134,7 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 		    p = nullptr;		\
 		} while (0)
 
-
+显然构造函数接受的参数既可以是类型实参T指定的原生指针类型，也可以是其他能通过隐式类型转换到T* 的指针。
 
 ###拷贝构造函数
 接下来是拷贝构造函数
@@ -183,7 +183,7 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 	XP<Derive> dXP(new Derive);
 	XP<Base> bXP(dXP);	// ERROR!
 	
-因为模板的精确匹配，不能满足上诉用法，使得XP类模板的设计不尽人意，为此，需要添加一个拷贝构造函数模板:
+因为模板的精确匹配原则，不能满足上诉用法，使得XP类模板的设计不尽人意。为此，需要添加一个拷贝构造模板函数:
 	
 	template <typename Y>
     XP(const XP<Y>& other); //支持隐式类型转换的拷贝构造函数
@@ -198,6 +198,12 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 	{
 	    increment();
 	}
+
+这样就保证了:
+	
+	如果Y*指针能通过隐式类型转换到T*指针，
+	那么XP<Y>也能隐式类型转换到XP<T>;
+从而保证了与原生指针类型用法上的一致性。
 
 与普通拷贝构造函数类似，该构造函数主要完成：
 
