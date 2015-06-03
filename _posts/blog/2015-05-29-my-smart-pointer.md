@@ -247,13 +247,20 @@ C++11中可以通过std:::shared_ptr<typename>模板使用共享智能指针。�
 
 让普通的operator=的实现借用泛化版本的operator=。
 
-最后的最后，需要重载一下operator->，这样才能让XP对象具备原生指针的表达力。
+最后的最后，需要重载一下operator->和operator*，这样才能让XP对象具备原生指针的表达力。
 
 	template <typename T>
 	typename XP<T>::ElementType* XP<T>::operator->()
 	{
 	    return _pointer;
 	}
+	
+	template <typename T>
+	typename XP<T>::ElementType XP<T>::operator*()
+	{
+	    return *_pointer;
+	}
+
 
 ###析构函数
 析构函数非常简单，就是调用了一下release实现。
