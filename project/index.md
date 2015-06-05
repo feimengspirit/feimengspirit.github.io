@@ -29,7 +29,7 @@ layout: home
                 <img src="/images/lambda.png" width="120%" />
             </div>
             <br/>
-            <h4>正如树叶荣枯，鼎膨代谢，终随秋风凋落，人生风景亦如斯。</h4>
+            <h4>iOS | MacOS | Unix | C++</h4>
             <!-- 微博 -->
             <a href="http://weibo.com/208234305/" target="_blank" title="微博">
                 <i class="fa fa-weibo fa-2x"></i>
