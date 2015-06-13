@@ -3,6 +3,7 @@ layout: post
 title: WWDC2015
 category: opinion
 description: WWDC2015来啦
+published: false
 ---
 
 <img src="/images/opinion/wwdc15.png" width="60%">
@@ -13,7 +14,7 @@ description: WWDC2015来啦
 iOS9以分屏的形式支持多任务了。比如你正在safari中畅游，想同时做一些笔记。或者浏览相册的同时想发短信。可以使用分屏方式。
 ![][image-1]
 
-<embed src="1/music/Pale_Blue_Eyes.mp3" autostart="true" loop="true" width="300" height="70"> </embed>
+<embed src="/music/Pale_Blue_Eyes.mp3" autostart="true" loop="true" width="300" height="70"> </embed>
 
 
 <div id="ckepop">
