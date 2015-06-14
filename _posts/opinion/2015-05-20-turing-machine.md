@@ -53,8 +53,6 @@ tags: turing machine
 ## 扩展阅读
 * [康托尔、哥德尔、图灵—永恒的金色对角线][1]
 
-
-
 <div id="ckepop">
 <span class="jiathis_txt">分享到：</span>
 <a class="jiathis_button_tsina">新浪微博</a>
