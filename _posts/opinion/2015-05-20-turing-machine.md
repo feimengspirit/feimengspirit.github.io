@@ -50,6 +50,11 @@ tags: turing machine
 最近正好看了图灵的传记电影《模拟游戏》，卷福的演出很赞。一个伟大得无法赞誉的天才，一个传奇的生命。致敬我们现在所从事工作的先驱，人工智能之父，上个世纪最伟大的数学家、计算机学家-Alan Mathison Turing
 ![turing][image-1]
 
+## 扩展阅读
+* [康托尔、哥德尔、图灵—永恒的金色对角线][1]
+
+
+
 <div id="ckepop">
 <span class="jiathis_txt">分享到：</span>
 <a class="jiathis_button_tsina">新浪微博</a>
@@ -59,5 +64,7 @@ tags: turing machine
 <a class="jiathis_counter_style"></a>
 </div>
 <script type="text/javascript" src="http://v2.jiathis.com/code/jia.js" charset="utf-8"></script>
+
+[1]:	http://mindhacks.cn/2006/10/15/cantor-godel-turing-an-eternal-golden-diagonal/
 
 [image-1]:	/images/blog/turing.jpg
