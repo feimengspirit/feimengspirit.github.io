@@ -115,6 +115,12 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     /* 宽度和高度需要相等 */
 }
 
+span.footnote { 
+    vertical-align: super; 
+    font-size: 11px; 
+    color: #b3b3b3;
+} 
+
 .index-content .section { margin-left:30%; padding-top:80px; padding-right:15%; ;}
 
 .index-content .artical-list { width:70%; margin:0 auto; }

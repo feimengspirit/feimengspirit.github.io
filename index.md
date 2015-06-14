@@ -24,7 +24,7 @@ layout: home
     <div class="aside">
         <div class="introduction">
             <div class="photo"> 
-                <img src="/images/lambda.png" width="120%" />
+                <img src="/images/lambda.png" width="100%" />
             </div>
             <br/>
             <h4>iOS | MacOS | Unix | C++</h4>
