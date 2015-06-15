@@ -79,6 +79,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     background-size:cover;
     background-position:50% 50%;
 }
+
 .blog .aside{
     /*background-image:url(https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*cF2i1ZosSP_UTJig.jpeg);*/
     background-image:url(/images/background/blog.jpg);
@@ -91,6 +92,7 @@ pre ol{margin-left:25px;list-style-type:decimal;}
     /*background-image:url('https://d233eq3e3p3cv0.cloudfront.net/max/1000/0*kTUZamBulGQZg1MW.jpeg')*/
     background-image:url(/images/background/blog.jpg)
 }
+
 
 .introduction {
     color: white;   
