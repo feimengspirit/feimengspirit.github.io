@@ -134,8 +134,8 @@ category: blog
 	        if (item.second) {
 	            return item.first;
 	        }
-	});
-	    return module_uncare;
+	   });
+	   return module_uncare;
 	}
 
 结果上面的改造后，不仅分类逻辑更加清晰，也更加便于维护了。如果需要修改，则只需要修改该map即可。
