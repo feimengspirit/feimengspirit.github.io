@@ -78,7 +78,9 @@ category: blog
 	{
 	    return car && logic_and(tail...);
 	}
-	
+ 
+利用c++编译器对模板和普通函数的精确匹配原则，重载实现。当表达式只有一个元素时直接返回之，将第一个元素与对其余元素递归调用后的结果进行逻辑&&;
+
 同样的手法实现or和not算符。
 
 	inline bool logic_or(bool v)
@@ -96,7 +98,7 @@ category: blog
 	{
 	    return !v;
 	}
-	
+ 
 
 哈哈，实现完毕。让我们观察一下，由于是通过递归传参，所以我们损失掉了短路计算特性。不过相对于其强大的表达能力，完全可以接受的。有了上面的基本函数，你可以轻松构造出下面的表达式：
 
@@ -107,35 +109,35 @@ category: blog
 怎么样，虽然结构很复杂，但你可以一眼看出结构，不会被那么多的括号弄花眼了吧。
 
 ## 应用案例
-接下来，我们可以结合一个例子看一下用法。假如你有一批页面，每个页面包含有若干参数(如页面名称，title等)。现在你需要写一个简单的分类器，根据这些参数去分类。传统的写法可能是这样的。
+接下来，我们可以结合一个例子看一下用法。假如你有很多样本，每个样本包含有若干参数(如param1、param2…)。现在你需要写一个简单的分类器，根据这些参数去分类。传统的写法可能是这样的。
 
-	module category(const PageParam& param)
+	class classify(const Param& params)
 	{
-	   if (param.pageid == "page1" && page.title = "title1") {
-	        return module1;
+	   if (params.param1 == "param1" && params.param2 = "param2") {
+	        return class1;
 	   }
 	   if (....) {
 	        return ...;
 	   }
 	}
 
-上面代码是很烂的，首先没有使用语言本身的任何高级特性。带来的后果是及其难以维护。下面我们就着手使用之前的逻辑表达式来重构一番。
+上面代码是很烂的，if的泛滥使用带来的后果是及其难以维护。而且没有使用语言本身的任何高级特性。下面我们就着手使用之前的逻辑表达式来重构一番。
 
-	module category(const PageParam& param)
+	class classify(const PageParam& params)
 	{
-	   map<module, bool> desc = 
+	   map<class, bool> desc = 
 	   {
-	       { module1, logic_and(param.pageid == "page1", param.title == "title1")},
-	       { module2, logic_or(param.pageid=="page1", param.title=="title1", 
-	                           logic_and(param.id=="id1", param.desc="i am page1"))}
+	       { class1, logic_and(params.param1 == "param1", params.param2 == "param2")},
+	       { class2, logic_or(params.param1=="param1", params.param2=="param2", 
+	                           logic_and(params.param1=="param1", params.desc="i am page1"))}
 	   }
 	
-	   for_each(begin(desc), end(desc), [&](const map<module, bool>::value_type& item) {
+	   for_each(begin(desc), end(desc), [&](const map<class, bool>::value_type& item) {
 	        if (item.second) {
 	            return item.first;
 	        }
 	   });
-	   return module_uncare;
+	   return class_other;
 	}
 
 结果上面的改造后，不仅分类逻辑更加清晰，也更加便于维护了。如果需要修改，则只需要修改该map即可。
@@ -155,7 +157,7 @@ category: blog
 	{
 	    return std::bind(std::logical_and<bool>(), head, LOGIC_AND(tail...));
 	}
-	   
+	
 	/*==多元或==*/
 	template <typename T>
 	auto LOGIC_OR(const T& functor)->decltype(functor)
