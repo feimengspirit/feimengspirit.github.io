@@ -28,7 +28,7 @@ category: blog
 	      (- 3 5)
 	      6))
 	 7)
-	
+ 
 看清楚了吗，如果对编译过程稍有了解的可能知道，高级语言中的顺序表达式在语法分析阶段会被解析成语法树，而我们的改写恰恰就和这个语法树的形式相对应。
 
 <img src="/images/blog/arithmometer.png" width="40%">
@@ -75,7 +75,7 @@ category: blog
 	{
 	    auto operator()(const T& x, const T& y) const { return x  / y; }
 	};
-基本算法实现完以后，我们需要实现一个不定参数的求知器。
+基本算法实现完以后，我们需要实现一个不定参数的求值器。
 
 	template <template <typename> class O, typename R, typename Car>
 	inline void iEval(R& result, const Car& head)
@@ -120,7 +120,7 @@ category: blog
 	LOG_INFO("*: %f", MULTIPLIES(1.1, 2, 3, 4, 5, 6));
 	LOG_INFO("/: %f", DIVIDES(PLUS(1.0, 2, 3, 5, 6),
 	                          MINUS(10, 9, 8, 7)));
-	 
+  
 和原生四则运算表达式不同的是，你可以一眼看出这些表达式的结构。有点意思吧。
 
 Duang一下，如你所料，上面那些表达式的结果为：
