@@ -29,7 +29,7 @@ layout: home
                 <img src="/images/lambda.png" width="100%" />
             </div>
             <br/>
-            <h4>iOS | MacOS | Unix | C++</h4>
+            <h3>Lambda | iOS | Unix | C++</h3>
             <!-- 微博 -->
             <a href="http://weibo.com/208234305/" target="_blank" title="微博">
                 <i class="fa fa-weibo fa-2x"></i>
