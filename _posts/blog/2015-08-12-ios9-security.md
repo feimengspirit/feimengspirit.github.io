@@ -107,10 +107,12 @@ Keychain中的元素现在可以通过手机passcode和app级的密码双重加�
 	status = SecKeyRawSign(privateKey, kSecPaddingPKCS1, digestData, digestLength, signature, &signatureLength);
 	
 
+比较巧妙的是，由于生成密钥时的ACL中指定了**kSecAccessControlTouchIDAny**,这样在请求签名时候，会自动弹出TouchID的验证界面，从而指纹的验证和签名的生成作为一个原子操作都被封装到SE中，外界无法伪造指纹的通过来骗取签名，这是一个非常重要的安全特性。
+
 到这里我们就生成了一个签名，通常的流程是将该签名发到服务端去验证，查看签名是否正确。
 需要注意的是，在SE中生成ECC密钥时，SE中将只保存私钥，并不保存公钥，所以这里我们如果想通过指定kSecAttrKeyClass为public来查找公钥是无法奏效的。App自己负责保存公钥。
 
-鉴于没有找到提取公钥的方式，这里先不提供验签的实现了，如果找到了再做补充吧。
+鉴于没有找到提取公钥的方式，这里先不提供验签的实现了，如果找到了再做补充吧。谢谢！
 
 <div id="ckepop">
 <span class="jiathis_txt">分享到：</span>
