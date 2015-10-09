@@ -10,40 +10,41 @@ category: blog
 比如如果定义了下面的enum
 
 	typedef enum CountryType {
-		COUNTRY_SOCIALISM = 0,
-		COUNTRY_CAPTIALISM
+	    COUNTRY_SOCIALISM = 0,
+	    COUNTRY_CAPTIALISM
 	} CountryType;
-	
+ 
 为了可以将该枚举形转到string，一般的做法都是额外定义一个array，该array里按照enum相同的顺序定义一系列字符串。如
 
 	#define CountryTypeDesc \
 	(const char*[]) { \
-		"socialism", \
-		"captialism" \
+	    "socialism", \
+	    "captialism" \
 	}
 
 这种方式明显不够灵活：
+
 1. 一旦enum中定义的item顺序变过，还需要认为的将描述数组里的顺序也相应调整，维护工作量太大；
 2. 根本原因则是相同的数据人工的定义了两次，这两个数据在语言层面脱离了联系，必须人工维护其一致性。
 
 一个更好的方式是利用预编译的机制实现。废话不多说，上代码。
 
 	#define COUNTRY_ITEMS  \
-		ITEM(COUNTRY_SOCIALISM), \
-		ITEM(COUNTRY_CAPTIALISM)
-
+	    ITEM(COUNTRY_SOCIALISM), \
+	    ITEM(COUNTRY_CAPTIALISM)
+	
 	#define ITEM(a) a
 	typedef enum CountryType {
-		COUNTRY_ITEMS
+	    COUNTRY_ITEMS
 	} CountryType;
-
+	
 	#undef ITEM
 	#define ITEM(a) #a
 	#define CountryTypeDesc \
 	(const char*[]) { \
-		COUNTRY_ITEMS \
+	    COUNTRY_ITEMS \
 	}
-	
+ 
 
 利用预编译，一次定义了两个数据类型，enum和string数组，并且自然的保持一致。后面如果要增加、删除或者变动枚举顺序，也仅需要改动一处。好处多多吧。
 
