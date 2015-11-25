@@ -1,6 +1,6 @@
 ---
 layout: post
-title: iOS9安全特性概述(一):Keychain
+title: iOS9安全特性概述(更新SE的部分)
 description: 谈谈刚刚释出的iOS9在安全上的一些新特性
 category: blog
 ---
@@ -27,13 +27,13 @@ Keychain中的元素现在可以通过手机passcode和app级的密码双重加�
 	 CFErrorRef error = NULL;
 	 //ACL
 	 SecAccessControlRef sacObject = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
-							kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
-							kSecAccessControlTouchIDAny | kSecAccessControlApplicationPassword,
-							&error);
+	                        kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
+	                        kSecAccessControlTouchIDAny | kSecAccessControlApplicationPassword,
+	                        &error);
 	
 	 LAContext *context = [[LAContext alloc] init];
 	 NSString *password = @"e693b64e405e9ddc578959b97665e750";
-	  //设置Application Password	 
+	  //设置Application Password   
 	 [context setCredential:[password dataUsingEncoding:NSUTF8StringEncoding] type:LACredentialTypeApplicationPassword];
 	
 	 NSData *secretPasswordTextData = [@"SECRET_PASSWORD_TEXT" dataUsingEncoding:NSUTF8StringEncoding];
@@ -62,21 +62,21 @@ Keychain中的元素现在可以通过手机passcode和app级的密码双重加�
 		Sec AccessControlRef sacObject;
 		//ACL
 		sacObject = SecAccessControlCreateWithFlags(kCFAllocatorDefault,
-	                                                kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
-	                                                kSecAccessControlTouchIDAny | kSecAccessControlPrivateKeyUsage, &error);
-	
+		                                            kSecAttrAccessibleWhenPasscodeSetThisDeviceOnly,
+		                                            kSecAccessControlTouchIDAny | kSecAccessControlPrivateKeyUsage, &error);
+		
 		// 密钥参数
 		NSDictionary *parameters = @{
-	        (__bridge id)kSecAttrTokenID: (__bridge id)kSecAttrTokenIDSecureEnclave, //私钥存入SE
-	        (__bridge id)kSecAttrKeyType: (__bridge id)kSecAttrKeyTypeEC, //如果要使用SE，这里只能指定kSecAttrKeyTypeEC
-	        (__bridge id)kSecAttrKeySizeInBits: @256,
-	        (__bridge id)kSecPrivateKeyAttrs: @{
-	            (__bridge id)kSecAttrAccessControl: (__bridge_transfer id)sacObject,
-	            (__bridge id)kSecAttrIsPermanent: @YES,
-	            (__bridge id)kSecAttrLabel: @"my-se-key", //密钥名
-	        },
-	    };
-	
+		    (__bridge id)kSecAttrTokenID: (__bridge id)kSecAttrTokenIDSecureEnclave, //私钥存入SE
+		    (__bridge id)kSecAttrKeyType: (__bridge id)kSecAttrKeyTypeEC, //如果要使用SE，这里只能指定kSecAttrKeyTypeEC
+		    (__bridge id)kSecAttrKeySizeInBits: @256,
+		    (__bridge id)kSecPrivateKeyAttrs: @{
+		        (__bridge id)kSecAttrAccessControl: (__bridge_transfer id)sacObject,
+		        (__bridge id)kSecAttrIsPermanent: @YES,
+		        (__bridge id)kSecAttrLabel: @"my-se-key", //密钥名
+		    },
+		};
+		
 		//产生公私钥对
 		SecKeyRef publicKey, privateKey;
 		OSStatus status = SecKeyGeneratePair((__bridge CFDictionaryRef)parameters, &publicKey, &privateKey);
@@ -84,8 +84,60 @@ Keychain中的元素现在可以通过手机passcode和app级的密码双重加�
 
 这里返回的publicKey为实际的公钥数据，而privateKey仅仅为私钥在SE中对应的token,通过该token只能请求签名，而无法dump出私钥的具体内容。App可以在完成上述调用后将公钥保存到服务端,以备后面进行签名验证。
 
-> **注:**这里有个问题，publicKey虽然是ECC公钥的具体数据，但是非标准格式，security.framework当前版本还没有提供提取公钥的具体工具，我相信后面应该会有更新，否则公钥验证只能停留在客户端，意义就大打折扣，如果读者找到方案也请告知我，非常感谢。
+* 接下来要做的是将公钥上传到服务端做保存，以便在后续验证的时候使用。可惜这个api设计的及其讨厌，SecGenerateKeyPair返回的既非公钥数据也非标准格式，而仅仅是一个类似句柄的东西。如果想得到具体的公钥，还需要一点技巧。
 
+		NSDictionary *pubDict = @{
+		        (__bridge id)kSecClass              : (__bridge id)kSecClassKey,
+		        (__bridge id)kSecAttrKeyType        : (__bridge id)kSecAttrKeyTypeEC,
+		        (__bridge id)kSecAttrLabel          : @"",
+		        (__bridge id)kSecAttrIsPermanent    : @(YES),
+		        (__bridge id)kSecValueRef           : (__bridge id)publicKey,
+		        (__bridge id)kSecAttrKeyClass       : (__bridge id)kSecAttrKeyClassPublic,
+		        (__bridge id)kSecReturnData         : @(YES)
+		    };
+		
+		    CFTypeRef dataRef = NULL;
+		    status = SecItemAdd((__bridge CFDictionaryRef)pubDict, &dataRef);
+
+通过将publicKey添加到Keychain并同时得到返回值的方式来拿到具体的公钥数据dataRef。现在已经得到了具体的公钥了，然而这是一个NSData，想要转换成标准的pem格式还需要继续努力
+
+* 上面得到的是一个公钥的裸数据，确实必要的头信息，所以首先我们需要附上必要的头信息。
+
+		#define kCryptoExportImportManagerSecp256r1CurveLen     256
+		unsigned char kCryptoExportImportManagerSecp256r1header[] =
+		    {   0x30, 0x59, 0x30, 0x13, 0x06, 0x07,
+		        0x2A, 0x86, 0x48, 0xCE, 0x3D, 0x02,
+		        0x01, 0x06, 0x08, 0x2A, 0x86, 0x48,
+		        0xCE, 0x3D, 0x03, 0x01, 0x07, 0x03,
+		        0x42, 0x00
+		    };
+		
+		#define kCryptoExportImportManagerSecp256r1headerLen    26
+		
+		NSMutableData *data = [NSMutableData dataWithBytes:kCryptoExportImportManagerSecp256r1header
+		                                                length:sizeof(kCryptoExportImportManagerSecp256r1header)];
+		[data appendData:raw_data]; //data为公钥裸数据
+  
+ 
+接着需要对该数据做一下base64然后附上头尾信息就ok了。
+
+	#define kCryptoExportImportManagerPublicKeyInitialTag       "-----BEGIN PUBLIC KEY-----\n"
+	#define kCryptoExportImportManagerPublicKeyFinalTag         "-----END PUBLIC KEY-----"
+	#define kCryptoExportImportManagerPublicNumberOfCharactersInALine   64
+	
+	pem_pub_key = kCryptoExportImportManagerPublicKeyInitialTag;
+	NSString *base64String = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+	pem_pub_key += __STDSTRING(base64String);
+	pem_pub_key += "\n";
+	pem_pub_key += kCryptoExportImportManagerPublicKeyFinalTag;
+
+好了，一个标准的pem格式的公钥完成了。形状就是长成这样的：
+
+	-----BEGIN PUBLIC KEY-----
+	MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEKvkwKGqmPfg6FyeTIX4/L+rNBpo6
+	fJQbUbNJCTmw9MIgSL8Kxn9pi+rH9P34LFnH6vvwfLTtNeYRmoILtNp+wg==
+	-----END PUBLIC KEY----- 
+ 
 接下来就是请求签名了
 
 	NSDictionary *query = @{
@@ -105,14 +157,37 @@ Keychain中的元素现在可以通过手机passcode和app级的密码双重加�
 	uint8_t digestData[32];
 	size_t digestLength = sizeof(digestData);
 	status = SecKeyRawSign(privateKey, kSecPaddingPKCS1, digestData, digestLength, signature, &signatureLength);
-	
+ 
 
 比较巧妙的是，由于生成密钥时的ACL中指定了**kSecAccessControlTouchIDAny**,这样在请求签名时候，会自动弹出TouchID的验证界面，从而指纹的验证和签名的生成作为一个原子操作都被封装到SE中，外界无法伪造指纹的通过来骗取签名，这是一个非常重要的安全特性。
 
 到这里我们就生成了一个签名，通常的流程是将该签名发到服务端去验证，查看签名是否正确。
 需要注意的是，在SE中生成ECC密钥时，SE中将只保存私钥，并不保存公钥，所以这里我们如果想通过指定kSecAttrKeyClass为public来查找公钥是无法奏效的。App自己负责保存公钥。
 
-鉴于没有找到提取公钥的方式，这里先不提供验签的实现了，如果找到了再做补充吧。谢谢！
+然后使用我们上面导出的pem格式公钥来完成签名的验证试试:（使用openssl）
+
+	BIO *buf = BIO_new_mem_buf((void*)pemPubKey.c_str(), (int)pemPubKey.size());
+	EC_KEY *ecKey = PEM_read_bio_EC_PUBKEY(buf, NULL, NULL, NULL);
+	EC_KEY_print_fp(stdout, ecKey, 2);
+	
+	uint8_t hash[CC_SHA256_DIGEST_LENGTH];
+	CC_SHA256(plain.UTF8String, (CC_LONG)plain.length, hash);
+	
+	int ret = ECDSA_verify(0, hash, sizeof(hash), &signature[0], signatureLength, ecKey);
+ 
+ret为1表示验签通过，噢耶! 中间的公钥输出是这样的:
+
+	Private-Key: (256 bit)
+	  pub: 
+	      04:2a:f9:30:28:6a:a6:3d:f8:3a:17:27:93:21:7e:
+	      3f:2f:ea:cd:06:9a:3a:7c:94:1b:51:b3:49:09:39:
+	      b0:f4:c2:20:48:bf:0a:c6:7f:69:8b:ea:c7:f4:fd:
+	      f8:2c:59:c7:ea:fb:f0:7c:b4:ed:35:e6:11:9a:82:
+	      0b:b4:da:7e:c2
+	  ASN1 OID: prime256v1
+	  NIST CURVE: P-256
+
+好，到此完毕。
 
 <div id="ckepop">
 <span class="jiathis_txt">分享到：</span>
