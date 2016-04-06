@@ -1,3 +1,17 @@
 
 //忽略本地站点下的文件
 _site
+
+_posts/.Ulysses-Group.plist
+
+_posts/blog/.Ulysses-Group.plist
+
+_posts/opinion/.Ulysses-Group.plist
+
+_posts/project/.Ulysses-Group.plist
+
+opinion/.Ulysses-Group.plist
+
+project/.Ulysses-Group.plist
+
+_posts/.Ulysses-favorites.plist
